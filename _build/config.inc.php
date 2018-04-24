@@ -11,18 +11,18 @@ if (!defined('MODX_CORE_PATH')) {
 return [
     'name' => 'helpForm',
     'name_lower' => 'helpform',
-    'version' => '2.0.0',
-    'release' => 'pl',
+    'version' => '1.0.0',
+    'release' => 'beta',
     // Install package to site right after build
-    'install' => true,
+    'install' => false,
     // Which elements should be updated on package upgrade
     'update' => [
         'chunks' => false,
-        'menus' => true,
+        'menus' => false,
         'plugins' => true,
         'resources' => false,
         'settings' => false,
-        'snippets' => true,
+        'snippets' => false,
         'templates' => false,
         'widgets' => false,
     ],

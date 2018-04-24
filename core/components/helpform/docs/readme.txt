@@ -1,7 +1,7 @@
 --------------------
 helpForm
 --------------------
-Author: John Doe <john@doe.com>
+Author: Electrica <info@modx.kz>
 --------------------
 
-A basic Extra for MODx Revolution.
+Форма для получения помощи MODX

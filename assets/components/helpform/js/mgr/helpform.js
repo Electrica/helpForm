@@ -8,3 +8,18 @@ Ext.extend(helpForm, Ext.Component, {
 Ext.reg('helpform', helpForm);
 
 helpForm = new helpForm();
+
+helpForm.grid.Items = function (config) {
+
+    config = config || {};
+
+    Ext.applyIf(config, {
+        fields: ['id','name'],
+        columns: ['id', 'name']
+    });
+
+    helpForm.grid.Items.superclass.constructor.call(this, config);
+
+};
+Ext.extend(helpForm.grid.Items, MODx.grid.Grid, {});
+Ext.reg('helpform-grid', helpForm.grid.Items);

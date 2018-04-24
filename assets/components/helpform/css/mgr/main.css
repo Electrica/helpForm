@@ -1,96 +1,1489 @@
-/* Grid */
-.helpform-helpform-row-disabled { font-style: italic; opacity: .6; color: #555; }
-.x-grid3-col-actions { padding: 3px 0 3px 5px; }
+/* ========================================================================
+   Component: Form
+ ========================================================================== */
+/*
+ * 1. Define consistent box sizing.
+ *    Default is `content-box` with following exceptions set to `border-box`
+ *    `select`, `input[type="checkbox"]` and `input[type="radio"]`
+ *    `input[type="search"]` in Chrome, Safari and Opera
+ *    `input[type="color"]` in Firefox
+ * 2. Address margins set differently in Firefox/IE and Chrome/Safari/Opera.
+ * 3. Remove `border-radius` in iOS.
+ * 4. Change font properties to `inherit` in all browsers.
+ */
+.uk-input,
+.uk-select,
+.uk-textarea,
+.uk-radio,
+.uk-checkbox {
+    /* 1 */
+    box-sizing: border-box;
+    /* 2 */
+    margin: 0;
+    /* 3 */
+    border-radius: 0;
+    /* 4 */
+    font: inherit;
+}
+/*
+ * Show the overflow in Edge.
+ */
+.uk-input {
+    overflow: visible;
+}
+/*
+ * Remove the inheritance of text transform in Firefox.
+ */
+.uk-select {
+    text-transform: none;
+}
+/*
+ * 1. Change font properties to `inherit` in all browsers
+ * 2. Don't inherit the `font-weight` and use `bold` instead.
+ * NOTE: Both declarations don't work in Chrome, Safari and Opera.
+ */
+.uk-select optgroup {
+    /* 1 */
+    font: inherit;
+    /* 2 */
+    font-weight: bold;
+}
+/*
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+.uk-textarea {
+    overflow: auto;
+}
+/*
+ * Remove the inner padding and cancel buttons in Chrome on OS X and Safari on OS X.
+ */
+.uk-input[type="search"]::-webkit-search-cancel-button,
+.uk-input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+/*
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+.uk-input[type="number"]::-webkit-inner-spin-button,
+.uk-input[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+}
+/*
+ * Removes placeholder transparency in Firefox.
+ */
+.uk-input::-moz-placeholder,
+.uk-textarea::-moz-placeholder {
+    opacity: 1;
+}
+/*
+ * Improves consistency of cursor style for clickable elements
+ */
+.uk-radio:not(:disabled),
+.uk-checkbox:not(:disabled) {
+    cursor: pointer;
+}
+/*
+ * Define consistent border, margin, and padding.
+ */
+.uk-fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+/* Input, select and textarea
+ * Allowed: `text`, `password`, `datetime`, `datetime-local`, `date`,  `month`,
+            `time`, `week`, `number`, `email`, `url`, `search`, `tel`, `color`
+ * Disallowed: `range`, `radio`, `checkbox`, `file`, `submit`, `reset` and `image`
+ ========================================================================== */
+/*
+ * Remove default style in iOS.
+ */
+.uk-input,
+.uk-textarea {
+    -webkit-appearance: none;
+}
+/*
+ * 1. Prevent content overflow if a fixed width is used
+ * 2. Take the full width
+ * 3. Reset default
+ * 4. Style
+ */
+.uk-input,
+.uk-select,
+.uk-textarea {
+    /* 1 */
+    max-width: 100%;
+    /* 2 */
+    width: 100%;
+    /* 3 */
+    border: 0 none;
+    /* 4 */
+    padding: 0 10px;
+    background: #fff;
+    color: #666;
+    border: 1px solid #e5e5e5;
+    transition: 0.2s ease-in-out;
+    transition-property: color, background-color, border;
+}
+/*
+ * Single-line
+ * 1. Allow any element to look like an `input` or `select` element
+ * 2. Make sure line-height is not larger than height
+ *    Also needed to center the text vertically
+ */
+.uk-input,
+.uk-select:not([multiple]):not([size]) {
+    height: 40px;
+    vertical-align: middle;
+    /* 1 */
+    display: inline-block;
+}
+/* 2 */
+.uk-input:not(input),
+.uk-select:not(select) {
+    line-height: 38px;
+}
+/*
+ * Multi-line
+ */
+.uk-select[multiple],
+.uk-select[size],
+.uk-textarea {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    vertical-align: top;
+}
+/* Focus */
+.uk-input:focus,
+.uk-select:focus,
+.uk-textarea:focus {
+    outline: none;
+    background-color: #fff;
+    color: #666;
+    border-color: #1e87f0;
+}
+/* Disabled */
+.uk-input:disabled,
+.uk-select:disabled,
+.uk-textarea:disabled {
+    background-color: #f8f8f8;
+    color: #999;
+    border-color: #e5e5e5;
+}
+/*
+ * Placeholder
+ */
+.uk-input:-ms-input-placeholder {
+    color: #999 !important;
+}
+.uk-input::placeholder {
+    color: #999;
+}
+.uk-textarea:-ms-input-placeholder {
+    color: #999 !important;
+}
+.uk-textarea::placeholder {
+    color: #999;
+}
+/* Style modifier (`uk-input`, `uk-select` and `uk-textarea`)
+ ========================================================================== */
+/*
+ * Small
+ */
+.uk-form-small {
+    font-size: 0.875rem;
+}
+.uk-form-small:not(textarea):not([multiple]):not([size]) {
+    height: 30px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.uk-form-small:not(select):not(input):not(textarea) {
+    line-height: 28px;
+}
+/*
+ * Large
+ */
+.uk-form-large {
+    font-size: 1.25rem;
+}
+.uk-form-large:not(textarea):not([multiple]):not([size]) {
+    height: 55px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+.uk-form-large:not(select):not(input):not(textarea) {
+    line-height: 53px;
+}
+/* Style modifier (`uk-input`, `uk-select` and `uk-textarea`)
+ ========================================================================== */
+/*
+ * Error
+ */
+.uk-form-danger,
+.uk-form-danger:focus {
+    color: #f0506e;
+    border-color: #f0506e;
+}
+/*
+ * Success
+ */
+.uk-form-success,
+.uk-form-success:focus {
+    color: #32d296;
+    border-color: #32d296;
+}
+/*
+ * Blank
+ */
+.uk-form-blank {
+    background: none;
+    border-color: transparent;
+}
+.uk-form-blank:focus {
+    border-color: #e5e5e5;
+    border-style: dashed;
+}
+/* Width modifiers (`uk-input`, `uk-select` and `uk-textarea`)
+ ========================================================================== */
+/*
+ * Fixed widths
+ * Different widths for mini sized `input` and `select` elements
+ */
+input.uk-form-width-xsmall {
+    width: 50px;
+}
+select.uk-form-width-xsmall {
+    width: 75px;
+}
+.uk-form-width-small {
+    width: 130px;
+}
+.uk-form-width-medium {
+    width: 200px;
+}
+.uk-form-width-large {
+    width: 500px;
+}
+/* Select
+ ========================================================================== */
+/*
+ * 1. Remove default style. Also works in Firefox
+ * 2. Style
+ * 3. Remove default style in IE 10/11
+ */
+.uk-select:not([multiple]):not([size]) {
+    /* 1 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* 2 */
+    padding-right: 20px;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2224%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23666%22%20points%3D%2212%201%209%206%2015%206%22%20%2F%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23666%22%20points%3D%2212%2013%209%208%2015%208%22%20%2F%3E%0A%3C%2Fsvg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: 100% 50%;
+}
+/* 3 */
+.uk-select:not([multiple]):not([size])::-ms-expand {
+    display: none;
+}
+/*
+ * Disabled
+ */
+.uk-select:not([multiple]):not([size]):disabled {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2224%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23999%22%20points%3D%2212%201%209%206%2015%206%22%20%2F%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23999%22%20points%3D%2212%2013%209%208%2015%208%22%20%2F%3E%0A%3C%2Fsvg%3E%0A");
+}
+/* Radio and checkbox
+ * Note: Does not work in IE11
+ ========================================================================== */
+/*
+ * 1. Style
+ * 2. Make box more robust so it clips the child element
+ * 3. Vertical alignment
+ * 4. Remove default style
+ * 5. Fix black background on iOS
+ * 6. Center icons
+ */
+.uk-radio,
+.uk-checkbox {
+    /* 1 */
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    /* 2 */
+    overflow: hidden;
+    /* 3 */
+    margin-top: -4px;
+    vertical-align: middle;
+    /* 4 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* 5 */
+    background-color: transparent;
+    /* 6 */
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    border: 1px solid #cccccc;
+    transition: 0.2s ease-in-out;
+    transition-property: background-color, border;
+}
+.uk-radio {
+    border-radius: 50%;
+}
+/* Focus */
+.uk-radio:focus,
+.uk-checkbox:focus {
+    outline: none;
+    border-color: #1e87f0;
+}
+/*
+ * Checked
+ */
+.uk-radio:checked,
+.uk-checkbox:checked,
+.uk-checkbox:indeterminate {
+    background-color: #1e87f0;
+    border-color: transparent;
+}
+/* Focus */
+.uk-radio:checked:focus,
+.uk-checkbox:checked:focus,
+.uk-checkbox:indeterminate:focus {
+    background-color: #0e6dcd;
+}
+/*
+ * Icons
+ */
+.uk-radio:checked {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Ccircle%20fill%3D%22%23fff%22%20cx%3D%228%22%20cy%3D%228%22%20r%3D%222%22%20%2F%3E%0A%3C%2Fsvg%3E");
+}
+.uk-checkbox:checked {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2214%22%20height%3D%2211%22%20viewBox%3D%220%200%2014%2011%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23fff%22%20points%3D%2212%201%205%207.5%202%205%201%205.5%205%2010%2013%201.5%22%20%2F%3E%0A%3C%2Fsvg%3E%0A");
+}
+.uk-checkbox:indeterminate {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Crect%20fill%3D%22%23fff%22%20x%3D%223%22%20y%3D%228%22%20width%3D%2210%22%20height%3D%221%22%20%2F%3E%0A%3C%2Fsvg%3E");
+}
+/*
+ * Disabled
+ */
+.uk-radio:disabled,
+.uk-checkbox:disabled {
+    background-color: #f8f8f8;
+    border-color: #e5e5e5;
+}
+.uk-radio:disabled:checked {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Ccircle%20fill%3D%22%23999%22%20cx%3D%228%22%20cy%3D%228%22%20r%3D%222%22%20%2F%3E%0A%3C%2Fsvg%3E");
+}
+.uk-checkbox:disabled:checked {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2214%22%20height%3D%2211%22%20viewBox%3D%220%200%2014%2011%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23999%22%20points%3D%2212%201%205%207.5%202%205%201%205.5%205%2010%2013%201.5%22%20%2F%3E%0A%3C%2Fsvg%3E%0A");
+}
+.uk-checkbox:disabled:indeterminate {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Crect%20fill%3D%22%23999%22%20x%3D%223%22%20y%3D%228%22%20width%3D%2210%22%20height%3D%221%22%20%2F%3E%0A%3C%2Fsvg%3E");
+}
+/* Legend
+ ========================================================================== */
+/*
+ * Legend
+ * 1. Behave like block element
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove padding so people aren't caught out if they zero out fieldsets.
+ * 4. Style
+ */
+.uk-legend {
+    /* 1 */
+    width: 100%;
+    /* 2 */
+    color: inherit;
+    /* 3 */
+    padding: 0;
+    /* 4 */
+    font-size: 1.5rem;
+    line-height: 1.4;
+}
+/* Custom controls
+ ========================================================================== */
+/*
+ * 1. Container fits its content
+ * 2. Create position context
+ * 3. Prevent content overflow
+ * 4. Behave like most inline-block elements
+ */
+.uk-form-custom {
+    /* 1 */
+    display: inline-block;
+    /* 2 */
+    position: relative;
+    /* 3 */
+    max-width: 100%;
+    /* 4 */
+    vertical-align: middle;
+}
+/*
+ * 1. Position and resize the form control to always cover its container
+ * 2. Required for Firefox for positioning to the left
+ * 3. Required for Webkit to make `height` work
+ * 4. Hide controle and show cursor
+ * 5. Needed for the cursor
+ * 6. Clip height caused by 5. Needed for Webkit only
+ */
+.uk-form-custom select,
+.uk-form-custom input[type="file"] {
+    /* 1 */
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    /* 2 */
+    left: 0;
+    /* 3 */
+    -webkit-appearance: none;
+    /* 4 */
+    opacity: 0;
+    cursor: pointer;
+}
+.uk-form-custom input[type="file"] {
+    /* 5 */
+    font-size: 500px;
+    /* 6 */
+    overflow: hidden;
+}
+/* Label
+ ========================================================================== */
+.uk-form-label {
+    color: #333;
+    font-size: 0.875rem;
+}
+/* Layout
+ ========================================================================== */
+/*
+ * Stacked
+ */
+.uk-form-stacked .uk-form-label {
+    display: block;
+    margin-bottom: 5px;
+}
+/*
+ * Horizontal
+ */
+/* Tablet portrait and smaller */
+@media (max-width: 959px) {
+    /* Behave like `uk-form-stacked` */
+    .uk-form-horizontal .uk-form-label {
+        display: block;
+        margin-bottom: 5px;
+    }
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+    .uk-form-horizontal .uk-form-label {
+        width: 200px;
+        margin-top: 7px;
+        float: left;
+    }
+    .uk-form-horizontal .uk-form-controls {
+        margin-left: 215px;
+    }
+    /* Better vertical alignment if controls are checkboxes and radio buttons with text */
+    .uk-form-horizontal .uk-form-controls-text {
+        padding-top: 7px;
+    }
+}
+/* Icons
+ ========================================================================== */
+/*
+ * 1. Set position
+ * 2. Set width
+ * 3. Center icon vertically and horizontally
+ * 4. Style
+ */
+.uk-form-icon {
+    /* 1 */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    /* 2 */
+    width: 40px;
+    /* 3 */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    /* 4 */
+    color: #999;
+}
+/*
+ * Required for `a`.
+ */
+.uk-form-icon:hover {
+    color: #666;
+}
+/*
+ * Make `input` element clickable through icon, e.g. if it's a `span`
+ */
+.uk-form-icon:not(a):not(button):not(input) {
+    pointer-events: none;
+}
+/*
+ * Input padding
+ */
+.uk-form-icon:not(.uk-form-icon-flip) + .uk-input {
+    padding-left: 40px !important;
+}
+/*
+ * Position modifier
+ */
+.uk-form-icon-flip {
+    right: 0;
+    left: auto;
+}
+.uk-form-icon-flip + .uk-input {
+    padding-right: 40px !important;
+}
+/* ========================================================================
+   Component: Button
+ ========================================================================== */
+/*
+ * 1. Remove margins in Chrome, Safari and Opera.
+ * 2. Remove borders for `button`.
+ * 3. Remove border-radius in Chrome.
+ * 4. Address `overflow` set to `hidden` in IE.
+ * 5. Correct `font` properties and `color` not being inherited for `button`.
+ * 6. Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 7. Style
+ * 8. `line-height` is used to create a height because it also centers the text vertically for `a` elements.
+ *    Better would be to use height and flexbox to center the text vertically but flexbox doesn't work in Firefox on `button` elements.
+ * 9. Align text if button has a width
+ * 10. Required for `a`.
+ */
+.uk-button {
+    /* 1 */
+    margin: 0;
+    /* 2 */
+    border: none;
+    /* 3 */
+    border-radius: 0;
+    /* 4 */
+    overflow: visible;
+    /* 5 */
+    font: inherit;
+    color: inherit;
+    /* 6 */
+    text-transform: none;
+    /* 7 */
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 30px;
+    vertical-align: middle;
+    font-size: 0.875rem;
+    /* 8 */
+    line-height: 38px;
+    /* 9 */
+    text-align: center;
+    /* 10 */
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.1s ease-in-out;
+    transition-property: color, background-color, border-color;
+}
+.uk-button:not(:disabled) {
+    cursor: pointer;
+}
+/*
+ * Remove the inner border and padding in Firefox.
+ */
+.uk-button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+/* Hover */
+.uk-button:hover {
+    /* 8 */
+    text-decoration: none;
+}
+/* Focus */
+.uk-button:focus {
+    outline: none;
+}
+/* OnClick + Active */
+/* Style modifiers
+ ========================================================================== */
+/*
+ * Default
+ */
+.uk-button-default {
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #e5e5e5;
+}
+/* Hover + Focus */
+.uk-button-default:hover,
+.uk-button-default:focus {
+    background-color: transparent;
+    color: #333;
+    border-color: #b2b2b2;
+}
+/* OnClick + Active */
+.uk-button-default:active,
+.uk-button-default.uk-active {
+    background-color: transparent;
+    color: #333;
+    border-color: #999999;
+}
+/*
+ * Primary
+ */
+.uk-button-primary {
+    background-color: #1e87f0;
+    color: #fff;
+    border: 1px solid transparent;
+}
+/* Hover + Focus */
+.uk-button-primary:hover,
+.uk-button-primary:focus {
+    background-color: #0f7ae5;
+    color: #fff;
+}
+/* OnClick + Active */
+.uk-button-primary:active,
+.uk-button-primary.uk-active {
+    background-color: #0e6dcd;
+    color: #fff;
+}
+/*
+ * Secondary
+ */
+.uk-button-secondary {
+    background-color: #222;
+    color: #fff;
+    border: 1px solid transparent;
+}
+/* Hover + Focus */
+.uk-button-secondary:hover,
+.uk-button-secondary:focus {
+    background-color: #151515;
+    color: #fff;
+}
+/* OnClick + Active */
+.uk-button-secondary:active,
+.uk-button-secondary.uk-active {
+    background-color: #080808;
+    color: #fff;
+}
+/*
+ * Danger
+ */
+.uk-button-danger {
+    background-color: #f0506e;
+    color: #fff;
+    border: 1px solid transparent;
+}
+/* Hover + Focus */
+.uk-button-danger:hover,
+.uk-button-danger:focus {
+    background-color: #ee395b;
+    color: #fff;
+}
+/* OnClick + Active */
+.uk-button-danger:active,
+.uk-button-danger.uk-active {
+    background-color: #ec2147;
+    color: #fff;
+}
+/*
+ * Disabled
+ * The same for all style modifiers
+ */
+.uk-button-default:disabled,
+.uk-button-primary:disabled,
+.uk-button-secondary:disabled,
+.uk-button-danger:disabled {
+    background-color: transparent;
+    color: #999;
+    border-color: #e5e5e5;
+}
+/* Size modifiers
+ ========================================================================== */
+.uk-button-small {
+    padding: 0 15px;
+    line-height: 28px;
+    font-size: 0.875rem;
+}
+.uk-button-large {
+    padding: 0 40px;
+    line-height: 53px;
+    font-size: 0.875rem;
+}
+/* Text modifiers
+ ========================================================================== */
+/*
+ * Text
+ * 1. Reset
+ * 2. Style
+ */
+.uk-button-text {
+    /* 1 */
+    padding: 0;
+    line-height: 1.5;
+    background: none;
+    /* 2 */
+    color: #333;
+    position: relative;
+}
+.uk-button-text::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 100%;
+    border-bottom: 1px solid #333;
+    transition: right 0.3s ease-out;
+}
+/* Hover + Focus */
+.uk-button-text:hover,
+.uk-button-text:focus {
+    color: #333;
+}
+.uk-button-text:hover::before,
+.uk-button-text:focus::before {
+    right: 0;
+}
+/* Disabled */
+.uk-button-text:disabled {
+    color: #999;
+}
+.uk-button-text:disabled::before {
+    display: none;
+}
+/*
+ * Link
+ * 1. Reset
+ * 2. Style
+ */
+.uk-button-link {
+    /* 1 */
+    padding: 0;
+    line-height: 1.5;
+    background: none;
+    /* 2 */
+    color: #1e87f0;
+}
+/* Hover + Focus */
+.uk-button-link:hover,
+.uk-button-link:focus {
+    color: #0f6ecd;
+    text-decoration: underline;
+}
+/* Disabled */
+.uk-button-link:disabled {
+    color: #999;
+    text-decoration: none;
+}
+/* Group
+ ========================================================================== */
+/*
+ * 1. Using `flex` instead of `inline-block` to prevent whitespace betweent child elements
+ * 2. Behave like button
+ * 3. Create position context
+ */
+.uk-button-group {
+    /* 1 */
+    display: inline-flex;
+    /* 2 */
+    vertical-align: middle;
+    /* 3 */
+    position: relative;
+}
+/* Group
+     ========================================================================== */
+/*
+     * Collapse border
+     */
+.uk-button-group > .uk-button:nth-child(n+2),
+.uk-button-group > div:nth-child(n+2) .uk-button {
+    margin-left: -1px;
+}
+/*
+     * Create position context to superimpose the successor elements border
+     * Known issue: If you use an `a` element as button and an icon inside,
+     * the active state will not work if you click the icon inside the button
+     * Workaround: Just use a `button` or `input` element as button
+     */
+.uk-button-group .uk-button:hover,
+.uk-button-group .uk-button:focus,
+.uk-button-group .uk-button:active,
+.uk-button-group .uk-button.uk-active {
+    position: relative;
+    z-index: 1;
+}
 
-/* Actions */
-.action-red { color: darkred !important; }
-.action-green { color: darkgreen !important; }
-.action-blue { color: cadetblue !important; }
-.action-yellow { color: goldenrod !important; }
-.action-gray { color: dimgray !important; }
-ul.helpform-row-actions { margin: 0; padding: 0; list-style: none; }
-ul.helpform-row-actions li { float: left; }
-ul.helpform-row-actions .helpform-btn { padding: 5px; margin-right: 2px; min-width: 26px; font-size: inherit; }
+/*
+ * 1. `max-width` is needed for the pixel-based classes
+ */
+[class*='uk-width'] {
+    box-sizing: border-box;
+    width: 100%;
+    /* 1 */
+    max-width: 100%;
+}
+/* Halves */
+.uk-width-1-2 {
+    width: 50%;
+}
+/* Thirds */
+.uk-width-1-3 {
+    width: calc(100% * 1 / 3.001);
+}
+.uk-width-2-3 {
+    width: calc(100% * 2 / 3.001);
+}
+/* Quarters */
+.uk-width-1-4 {
+    width: 25%;
+}
+.uk-width-3-4 {
+    width: 75%;
+}
+/* Fifths */
+.uk-width-1-5 {
+    width: 20%;
+}
+.uk-width-2-5 {
+    width: 40%;
+}
+.uk-width-3-5 {
+    width: 60%;
+}
+.uk-width-4-5 {
+    width: 80%;
+}
+/* Sixths */
+.uk-width-1-6 {
+    width: calc(100% * 1 / 6.001);
+}
+.uk-width-5-6 {
+    width: calc(100% * 5 / 6.001);
+}
+/* Pixel */
+.uk-width-small {
+    width: 150px;
+}
+.uk-width-medium {
+    width: 300px;
+}
+.uk-width-large {
+    width: 450px;
+}
+.uk-width-xlarge {
+    width: 600px;
+}
+.uk-width-xxlarge {
+    width: 750px;
+}
+/* Auto */
+.uk-width-auto {
+    width: auto;
+}
+/* Expand */
+.uk-width-expand {
+    width: 1px;
+    flex: 1;
+    min-width: 0;
+    flex-basis: 1px;
+}
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+    /* Whole */
+    .uk-width-1-1\@s {
+        width: 100%;
+    }
+    /* Halves */
+    .uk-width-1-2\@s {
+        width: 50%;
+    }
+    /* Thirds */
+    .uk-width-1-3\@s {
+        width: calc(100% * 1 / 3.001);
+    }
+    .uk-width-2-3\@s {
+        width: calc(100% * 2 / 3.001);
+    }
+    /* Quarters */
+    .uk-width-1-4\@s {
+        width: 25%;
+    }
+    .uk-width-3-4\@s {
+        width: 75%;
+    }
+    /* Fifths */
+    .uk-width-1-5\@s {
+        width: 20%;
+    }
+    .uk-width-2-5\@s {
+        width: 40%;
+    }
+    .uk-width-3-5\@s {
+        width: 60%;
+    }
+    .uk-width-4-5\@s {
+        width: 80%;
+    }
+    /* Sixths */
+    .uk-width-1-6\@s {
+        width: calc(100% * 1 / 6.001);
+    }
+    .uk-width-5-6\@s {
+        width: calc(100% * 5 / 6.001);
+    }
+    /* Pixel */
+    .uk-width-small\@s {
+        width: 150px;
+    }
+    .uk-width-medium\@s {
+        width: 300px;
+    }
+    .uk-width-large\@s {
+        width: 450px;
+    }
+    .uk-width-xlarge\@s {
+        width: 600px;
+    }
+    .uk-width-xxlarge\@s {
+        width: 750px;
+    }
+    /* Auto */
+    .uk-width-auto\@s {
+        width: auto;
+    }
+    /* Expand */
+    .uk-width-expand\@s {
+        width: 1px;
+        flex: 1;
+        min-width: 0;
+        flex-basis: 1px;
+    }
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+    /* Whole */
+    .uk-width-1-1\@m {
+        width: 100%;
+    }
+    /* Halves */
+    .uk-width-1-2\@m {
+        width: 50%;
+    }
+    /* Thirds */
+    .uk-width-1-3\@m {
+        width: calc(100% * 1 / 3.001);
+    }
+    .uk-width-2-3\@m {
+        width: calc(100% * 2 / 3.001);
+    }
+    /* Quarters */
+    .uk-width-1-4\@m {
+        width: 25%;
+    }
+    .uk-width-3-4\@m {
+        width: 75%;
+    }
+    /* Fifths */
+    .uk-width-1-5\@m {
+        width: 20%;
+    }
+    .uk-width-2-5\@m {
+        width: 40%;
+    }
+    .uk-width-3-5\@m {
+        width: 60%;
+    }
+    .uk-width-4-5\@m {
+        width: 80%;
+    }
+    /* Sixths */
+    .uk-width-1-6\@m {
+        width: calc(100% * 1 / 6.001);
+    }
+    .uk-width-5-6\@m {
+        width: calc(100% * 5 / 6.001);
+    }
+    /* Pixel */
+    .uk-width-small\@m {
+        width: 150px;
+    }
+    .uk-width-medium\@m {
+        width: 300px;
+    }
+    .uk-width-large\@m {
+        width: 450px;
+    }
+    .uk-width-xlarge\@m {
+        width: 600px;
+    }
+    .uk-width-xxlarge\@m {
+        width: 750px;
+    }
+    /* Auto */
+    .uk-width-auto\@m {
+        width: auto;
+    }
+    /* Expand */
+    .uk-width-expand\@m {
+        width: 1px;
+        flex: 1;
+        min-width: 0;
+        flex-basis: 1px;
+    }
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+    /* Whole */
+    .uk-width-1-1\@l {
+        width: 100%;
+    }
+    /* Halves */
+    .uk-width-1-2\@l {
+        width: 50%;
+    }
+    /* Thirds */
+    .uk-width-1-3\@l {
+        width: calc(100% * 1 / 3.001);
+    }
+    .uk-width-2-3\@l {
+        width: calc(100% * 2 / 3.001);
+    }
+    /* Quarters */
+    .uk-width-1-4\@l {
+        width: 25%;
+    }
+    .uk-width-3-4\@l {
+        width: 75%;
+    }
+    /* Fifths */
+    .uk-width-1-5\@l {
+        width: 20%;
+    }
+    .uk-width-2-5\@l {
+        width: 40%;
+    }
+    .uk-width-3-5\@l {
+        width: 60%;
+    }
+    .uk-width-4-5\@l {
+        width: 80%;
+    }
+    /* Sixths */
+    .uk-width-1-6\@l {
+        width: calc(100% * 1 / 6.001);
+    }
+    .uk-width-5-6\@l {
+        width: calc(100% * 5 / 6.001);
+    }
+    /* Pixel */
+    .uk-width-small\@l {
+        width: 150px;
+    }
+    .uk-width-medium\@l {
+        width: 300px;
+    }
+    .uk-width-large\@l {
+        width: 450px;
+    }
+    .uk-width-xlarge\@l {
+        width: 600px;
+    }
+    .uk-width-xxlarge\@l {
+        width: 750px;
+    }
+    /* Auto */
+    .uk-width-auto\@l {
+        width: auto;
+    }
+    /* Expand */
+    .uk-width-expand\@l {
+        width: 1px;
+        flex: 1;
+        min-width: 0;
+        flex-basis: 1px;
+    }
+}
+/* Large screen and bigger */
+@media (min-width: 1600px) {
+    /* Whole */
+    .uk-width-1-1\@xl {
+        width: 100%;
+    }
+    /* Halves */
+    .uk-width-1-2\@xl {
+        width: 50%;
+    }
+    /* Thirds */
+    .uk-width-1-3\@xl {
+        width: calc(100% * 1 / 3.001);
+    }
+    .uk-width-2-3\@xl {
+        width: calc(100% * 2 / 3.001);
+    }
+    /* Quarters */
+    .uk-width-1-4\@xl {
+        width: 25%;
+    }
+    .uk-width-3-4\@xl {
+        width: 75%;
+    }
+    /* Fifths */
+    .uk-width-1-5\@xl {
+        width: 20%;
+    }
+    .uk-width-2-5\@xl {
+        width: 40%;
+    }
+    .uk-width-3-5\@xl {
+        width: 60%;
+    }
+    .uk-width-4-5\@xl {
+        width: 80%;
+    }
+    /* Sixths */
+    .uk-width-1-6\@xl {
+        width: calc(100% * 1 / 6.001);
+    }
+    .uk-width-5-6\@xl {
+        width: calc(100% * 5 / 6.001);
+    }
+    /* Pixel */
+    .uk-width-small\@xl {
+        width: 150px;
+    }
+    .uk-width-medium\@xl {
+        width: 300px;
+    }
+    .uk-width-large\@xl {
+        width: 450px;
+    }
+    .uk-width-xlarge\@xl {
+        width: 600px;
+    }
+    .uk-width-xxlarge\@xl {
+        width: 750px;
+    }
+    /* Auto */
+    .uk-width-auto\@xl {
+        width: auto;
+    }
+    /* Expand */
+    .uk-width-expand\@xl {
+        width: 1px;
+        flex: 1;
+        min-width: 0;
+        flex-basis: 1px;
+    }
+}
 
-/* Action menu */
-a.x-menu-item .x-menu-item-text, a.x-menu-item .x-menu-item-text .icon { cursor: pointer; }
-a.x-menu-item .x-menu-item-text .icon { line-height: 16px; top: auto; }
-.x-menu-list .icon { min-width: 1em; text-align: center; }
-.x-menu-list-item:hover .icon { color: inherit !important; }
-ul.helpform-row-actions .actions-menu { width: 40px; }
-ul.helpform-row-actions .actions-menu:after { content: " \f107"; }
-
-/* Search field */
-.x-field-search-clear,
-.x-field-search-go { border-left: 1px solid #e4e4e4 !important; }
-.x-field-search-clear:hover,
-.x-field-search-go:hover { border-left-color: transparent !important; }
-.x-field-search-clear:before { content: '\f00d' !important; }
-.x-field-search-go { right: 31px !important; border-radius: 0 !important; }
-.x-field-search-go:before { content: '\f002' !important; }
-
-/* Buttons */
-.helpform-btn { display: inline-block; margin-bottom: 0; font-weight: normal; text-align: center; vertical-align: middle; -ms-touch-action: manipulation; touch-action: manipulation; cursor: pointer; background-image: none; border: 1px solid transparent; white-space: nowrap; padding: 6px 12px; font-size: 14px; line-height: 1.42857143; border-radius: 4px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none }
-.helpform-btn:focus, .helpform-btn:active:focus, .helpform-btn.active:focus, .helpform-btn.focus, .helpform-btn:active.focus, .helpform-btn.active.focus { outline: thin dotted; outline: 5px auto -webkit-focus-ring-color; outline-offset: -2px }
-.helpform-btn:hover, .helpform-btn:focus, .helpform-btn.focus { color: #333; text-decoration: none }
-.helpform-btn:active, .helpform-btn.active { outline: 0; background-image: none; -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) }
-.helpform-btn.disabled, .helpform-btn[disabled], fieldset[disabled] .helpform-btn { cursor: not-allowed; opacity: .65; filter: alpha(opacity=65); -webkit-box-shadow: none; box-shadow: none }
-a.helpform-btn.disabled, fieldset[disabled] a.helpform-btn { pointer-events: none }
-.helpform-btn-default { color: #333; background-color: #fff; border-color: #ccc }
-.helpform-btn-default:focus, .helpform-btn-default.focus { color: #333; background-color: #e6e6e6; border-color: #8c8c8c }
-.helpform-btn-default:hover { color: #333; background-color: #e6e6e6; border-color: #adadad }
-.helpform-btn-default:active, .helpform-btn-default.active, .open > .dropdown-toggle.helpform-btn-default { color: #333; background-color: #e6e6e6; border-color: #adadad }
-.helpform-btn-default:active:hover, .helpform-btn-default.active:hover, .open > .dropdown-toggle.helpform-btn-default:hover, .helpform-btn-default:active:focus, .helpform-btn-default.active:focus, .open > .dropdown-toggle.helpform-btn-default:focus, .helpform-btn-default:active.focus, .helpform-btn-default.active.focus, .open > .dropdown-toggle.helpform-btn-default.focus { color: #333; background-color: #d4d4d4; border-color: #8c8c8c }
-.helpform-btn-default:active, .helpform-btn-default.active, .open > .dropdown-toggle.helpform-btn-default { background-image: none }
-.helpform-btn-default.disabled:hover, .helpform-btn-default[disabled]:hover, fieldset[disabled] .helpform-btn-default:hover, .helpform-btn-default.disabled:focus, .helpform-btn-default[disabled]:focus, fieldset[disabled] .helpform-btn-default:focus, .helpform-btn-default.disabled.focus, .helpform-btn-default[disabled].focus, fieldset[disabled] .helpform-btn-default.focus { background-color: #fff; border-color: #ccc }
-.helpform-btn-default .badge { color: #fff; background-color: #333 }
-.helpform-btn-primary { color: #fff; background-color: #337ab7; border-color: #2e6da4 }
-.helpform-btn-primary:focus, .helpform-btn-primary.focus { color: #fff; background-color: #286090; border-color: #122b40 }
-.helpform-btn-primary:hover { color: #fff; background-color: #286090; border-color: #204d74 }
-.helpform-btn-primary:active, .helpform-btn-primary.active, .open > .dropdown-toggle.helpform-btn-primary { color: #fff; background-color: #286090; border-color: #204d74 }
-.helpform-btn-primary:active:hover, .helpform-btn-primary.active:hover, .open > .dropdown-toggle.helpform-btn-primary:hover, .helpform-btn-primary:active:focus, .helpform-btn-primary.active:focus, .open > .dropdown-toggle.helpform-btn-primary:focus, .helpform-btn-primary:active.focus, .helpform-btn-primary.active.focus, .open > .dropdown-toggle.helpform-btn-primary.focus { color: #fff; background-color: #204d74; border-color: #122b40 }
-.helpform-btn-primary:active, .helpform-btn-primary.active, .open > .dropdown-toggle.helpform-btn-primary { background-image: none }
-.helpform-btn-primary.disabled:hover, .helpform-btn-primary[disabled]:hover, fieldset[disabled] .helpform-btn-primary:hover, .helpform-btn-primary.disabled:focus, .helpform-btn-primary[disabled]:focus, fieldset[disabled] .helpform-btn-primary:focus, .helpform-btn-primary.disabled.focus, .helpform-btn-primary[disabled].focus, fieldset[disabled] .helpform-btn-primary.focus { background-color: #337ab7; border-color: #2e6da4 }
-.helpform-btn-primary .badge { color: #337ab7; background-color: #fff }
-.helpform-btn-success { color: #fff; background-color: #5cb85c; border-color: #4cae4c }
-.helpform-btn-success:focus, .helpform-btn-success.focus { color: #fff; background-color: #449d44; border-color: #255625 }
-.helpform-btn-success:hover { color: #fff; background-color: #449d44; border-color: #398439 }
-.helpform-btn-success:active, .helpform-btn-success.active, .open > .dropdown-toggle.helpform-btn-success { color: #fff; background-color: #449d44; border-color: #398439 }
-.helpform-btn-success:active:hover, .helpform-btn-success.active:hover, .open > .dropdown-toggle.helpform-btn-success:hover, .helpform-btn-success:active:focus, .helpform-btn-success.active:focus, .open > .dropdown-toggle.helpform-btn-success:focus, .helpform-btn-success:active.focus, .helpform-btn-success.active.focus, .open > .dropdown-toggle.helpform-btn-success.focus { color: #fff; background-color: #398439; border-color: #255625 }
-.helpform-btn-success:active, .helpform-btn-success.active, .open > .dropdown-toggle.helpform-btn-success { background-image: none }
-.helpform-btn-success.disabled:hover, .helpform-btn-success[disabled]:hover, fieldset[disabled] .helpform-btn-success:hover, .helpform-btn-success.disabled:focus, .helpform-btn-success[disabled]:focus, fieldset[disabled] .helpform-btn-success:focus, .helpform-btn-success.disabled.focus, .helpform-btn-success[disabled].focus, fieldset[disabled] .helpform-btn-success.focus { background-color: #5cb85c; border-color: #4cae4c }
-.helpform-btn-success .badge { color: #5cb85c; background-color: #fff }
-.helpform-btn-info { color: #fff; background-color: #5bc0de; border-color: #46b8da }
-.helpform-btn-info:focus, .helpform-btn-info.focus { color: #fff; background-color: #31b0d5; border-color: #1b6d85 }
-.helpform-btn-info:hover { color: #fff; background-color: #31b0d5; border-color: #269abc }
-.helpform-btn-info:active, .helpform-btn-info.active, .open > .dropdown-toggle.helpform-btn-info { color: #fff; background-color: #31b0d5; border-color: #269abc }
-.helpform-btn-info:active:hover, .helpform-btn-info.active:hover, .open > .dropdown-toggle.helpform-btn-info:hover, .helpform-btn-info:active:focus, .helpform-btn-info.active:focus, .open > .dropdown-toggle.helpform-btn-info:focus, .helpform-btn-info:active.focus, .helpform-btn-info.active.focus, .open > .dropdown-toggle.helpform-btn-info.focus { color: #fff; background-color: #269abc; border-color: #1b6d85 }
-.helpform-btn-info:active, .helpform-btn-info.active, .open > .dropdown-toggle.helpform-btn-info { background-image: none }
-.helpform-btn-info.disabled:hover, .helpform-btn-info[disabled]:hover, fieldset[disabled] .helpform-btn-info:hover, .helpform-btn-info.disabled:focus, .helpform-btn-info[disabled]:focus, fieldset[disabled] .helpform-btn-info:focus, .helpform-btn-info.disabled.focus, .helpform-btn-info[disabled].focus, fieldset[disabled] .helpform-btn-info.focus { background-color: #5bc0de; border-color: #46b8da }
-.helpform-btn-info .badge { color: #5bc0de; background-color: #fff }
-.helpform-btn-warning { color: #fff; background-color: #f0ad4e; border-color: #eea236 }
-.helpform-btn-warning:focus, .helpform-btn-warning.focus { color: #fff; background-color: #ec971f; border-color: #985f0d }
-.helpform-btn-warning:hover { color: #fff; background-color: #ec971f; border-color: #d58512 }
-.helpform-btn-warning:active, .helpform-btn-warning.active, .open > .dropdown-toggle.helpform-btn-warning { color: #fff; background-color: #ec971f; border-color: #d58512 }
-.helpform-btn-warning:active:hover, .helpform-btn-warning.active:hover, .open > .dropdown-toggle.helpform-btn-warning:hover, .helpform-btn-warning:active:focus, .helpform-btn-warning.active:focus, .open > .dropdown-toggle.helpform-btn-warning:focus, .helpform-btn-warning:active.focus, .helpform-btn-warning.active.focus, .open > .dropdown-toggle.helpform-btn-warning.focus { color: #fff; background-color: #d58512; border-color: #985f0d }
-.helpform-btn-warning:active, .helpform-btn-warning.active, .open > .dropdown-toggle.helpform-btn-warning { background-image: none }
-.helpform-btn-warning.disabled:hover, .helpform-btn-warning[disabled]:hover, fieldset[disabled] .helpform-btn-warning:hover, .helpform-btn-warning.disabled:focus, .helpform-btn-warning[disabled]:focus, fieldset[disabled] .helpform-btn-warning:focus, .helpform-btn-warning.disabled.focus, .helpform-btn-warning[disabled].focus, fieldset[disabled] .helpform-btn-warning.focus { background-color: #f0ad4e; border-color: #eea236 }
-.helpform-btn-warning .badge { color: #f0ad4e; background-color: #fff }
-.helpform-btn-danger { color: #fff; background-color: #d9534f; border-color: #d43f3a }
-.helpform-btn-danger:focus, .helpform-btn-danger.focus { color: #fff; background-color: #c9302c; border-color: #761c19 }
-.helpform-btn-danger:hover { color: #fff; background-color: #c9302c; border-color: #ac2925 }
-.helpform-btn-danger:active, .helpform-btn-danger.active, .open > .dropdown-toggle.helpform-btn-danger { color: #fff; background-color: #c9302c; border-color: #ac2925 }
-.helpform-btn-danger:active:hover, .helpform-btn-danger.active:hover, .open > .dropdown-toggle.helpform-btn-danger:hover, .helpform-btn-danger:active:focus, .helpform-btn-danger.active:focus, .open > .dropdown-toggle.helpform-btn-danger:focus, .helpform-btn-danger:active.focus, .helpform-btn-danger.active.focus, .open > .dropdown-toggle.helpform-btn-danger.focus { color: #fff; background-color: #ac2925; border-color: #761c19 }
-.helpform-btn-danger:active, .helpform-btn-danger.active, .open > .dropdown-toggle.helpform-btn-danger { background-image: none }
-.helpform-btn-danger.disabled:hover, .helpform-btn-danger[disabled]:hover, fieldset[disabled] .helpform-btn-danger:hover, .helpform-btn-danger.disabled:focus, .helpform-btn-danger[disabled]:focus, fieldset[disabled] .helpform-btn-danger:focus, .helpform-btn-danger.disabled.focus, .helpform-btn-danger[disabled].focus, fieldset[disabled] .helpform-btn-danger.focus { background-color: #d9534f; border-color: #d43f3a }
-.helpform-btn-danger .badge { color: #d9534f; background-color: #fff }
-.helpform-btn-link { color: #337ab7; font-weight: normal; border-radius: 0 }
-.helpform-btn-link, .helpform-btn-link:active, .helpform-btn-link.active, .helpform-btn-link[disabled], fieldset[disabled] .helpform-btn-link { background-color: transparent; -webkit-box-shadow: none; box-shadow: none }
-.helpform-btn-link, .helpform-btn-link:hover, .helpform-btn-link:focus, .helpform-btn-link:active { border-color: transparent }
-.helpform-btn-link:hover, .helpform-btn-link:focus { color: #23527c; text-decoration: underline; background-color: transparent }
-.helpform-btn-link[disabled]:hover, fieldset[disabled] .helpform-btn-link:hover, .helpform-btn-link[disabled]:focus, fieldset[disabled] .helpform-btn-link:focus { color: #777; text-decoration: none }
-.helpform-btn-lg { padding: 10px 16px; font-size: 18px; line-height: 1.3333333; border-radius: 6px }
-.helpform-btn-sm { padding: 5px 10px; font-size: 12px; line-height: 1.5; border-radius: 3px }
-.helpform-btn-xs { padding: 1px 5px; font-size: 12px; line-height: 1.5; border-radius: 3px }
-.helpform-btn-block { display: block; width: 100% }
-.helpform-btn-block + .helpform-btn-block { margin-top: 5px }
+/*
+ * 1. Allow cells to wrap into the next line
+ * 2. Reset list
+ */
+.uk-grid {
+    display: flex;
+    /* 1 */
+    flex-wrap: wrap;
+    /* 2 */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+/*
+ * Grid cell
+ * Note: Space is allocated solely based on content dimensions, but shrinks: 0 1 auto
+ * Reset margin for e.g. paragraphs
+ */
+.uk-grid > * {
+    margin: 0;
+}
+/*
+ * Remove margin from the last-child
+ */
+.uk-grid > * > :last-child {
+    margin-bottom: 0;
+}
+/* Gutter
+ ========================================================================== */
+/*
+ * Default
+ */
+/* Horizontal */
+.uk-grid {
+    margin-left: -30px;
+}
+.uk-grid > * {
+    padding-left: 30px;
+}
+/* Vertical */
+.uk-grid + .uk-grid,
+.uk-grid > .uk-grid-margin,
+* + .uk-grid-margin {
+    margin-top: 30px;
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+    /* Horizontal */
+    .uk-grid {
+        margin-left: -40px;
+    }
+    .uk-grid > * {
+        padding-left: 40px;
+    }
+    /* Vertical */
+    .uk-grid + .uk-grid,
+    .uk-grid > .uk-grid-margin,
+    * + .uk-grid-margin {
+        margin-top: 40px;
+    }
+}
+/*
+ * Small
+ */
+/* Horizontal */
+.uk-grid-small {
+    margin-left: -15px;
+}
+.uk-grid-small > * {
+    padding-left: 15px;
+}
+/* Vertical */
+.uk-grid + .uk-grid-small,
+.uk-grid-small > .uk-grid-margin,
+* + .uk-grid-margin-small {
+    margin-top: 15px;
+}
+/*
+ * Medium
+ */
+/* Horizontal */
+.uk-grid-medium {
+    margin-left: -30px;
+}
+.uk-grid-medium > * {
+    padding-left: 30px;
+}
+/* Vertical */
+.uk-grid + .uk-grid-medium,
+.uk-grid-medium > .uk-grid-margin,
+* + .uk-grid-margin-medium {
+    margin-top: 30px;
+}
+/*
+ * Large
+ */
+/* Horizontal */
+.uk-grid-large {
+    margin-left: -40px;
+}
+.uk-grid-large > * {
+    padding-left: 40px;
+}
+/* Vertical */
+.uk-grid + .uk-grid-large,
+.uk-grid-large > .uk-grid-margin,
+* + .uk-grid-margin-large {
+    margin-top: 40px;
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+    /* Horizontal */
+    .uk-grid-large {
+        margin-left: -70px;
+    }
+    .uk-grid-large > * {
+        padding-left: 70px;
+    }
+    /* Vertical */
+    .uk-grid + .uk-grid-large,
+    .uk-grid-large > .uk-grid-margin,
+    * + .uk-grid-margin-large {
+        margin-top: 70px;
+    }
+}
+/*
+ * Collapse
+ */
+/* Horizontal */
+.uk-grid-collapse {
+    margin-left: 0;
+}
+.uk-grid-collapse > * {
+    padding-left: 0;
+}
+/* Vertical */
+.uk-grid + .uk-grid-collapse,
+.uk-grid-collapse > .uk-grid-margin {
+    margin-top: 0;
+}
+/* Divider
+ ========================================================================== */
+.uk-grid-divider > * {
+    position: relative;
+}
+.uk-grid-divider > :not(.uk-first-column)::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-left: 1px solid #e5e5e5;
+}
+/* Vertical */
+.uk-grid-divider.uk-grid-stack > .uk-grid-margin::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #e5e5e5;
+}
+/*
+ * Default
+ */
+/* Horizontal */
+.uk-grid-divider {
+    margin-left: -60px;
+}
+.uk-grid-divider > * {
+    padding-left: 60px;
+}
+.uk-grid-divider > :not(.uk-first-column)::before {
+    left: 30px;
+}
+/* Vertical */
+.uk-grid-divider.uk-grid-stack > .uk-grid-margin {
+    margin-top: 60px;
+}
+.uk-grid-divider.uk-grid-stack > .uk-grid-margin::before {
+    top: -30px;
+    left: 60px;
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+    /* Horizontal */
+    .uk-grid-divider {
+        margin-left: -80px;
+    }
+    .uk-grid-divider > * {
+        padding-left: 80px;
+    }
+    .uk-grid-divider > :not(.uk-first-column)::before {
+        left: 40px;
+    }
+    /* Vertical */
+    .uk-grid-divider.uk-grid-stack > .uk-grid-margin {
+        margin-top: 80px;
+    }
+    .uk-grid-divider.uk-grid-stack > .uk-grid-margin::before {
+        top: -40px;
+        left: 80px;
+    }
+}
+/*
+ * Small
+ */
+/* Horizontal */
+.uk-grid-divider.uk-grid-small {
+    margin-left: -30px;
+}
+.uk-grid-divider.uk-grid-small > * {
+    padding-left: 30px;
+}
+.uk-grid-divider.uk-grid-small > :not(.uk-first-column)::before {
+    left: 15px;
+}
+/* Vertical */
+.uk-grid-divider.uk-grid-small.uk-grid-stack > .uk-grid-margin {
+    margin-top: 30px;
+}
+.uk-grid-divider.uk-grid-small.uk-grid-stack > .uk-grid-margin::before {
+    top: -15px;
+    left: 30px;
+}
+/*
+ * Medium
+ */
+/* Horizontal */
+.uk-grid-divider.uk-grid-medium {
+    margin-left: -60px;
+}
+.uk-grid-divider.uk-grid-medium > * {
+    padding-left: 60px;
+}
+.uk-grid-divider.uk-grid-medium > :not(.uk-first-column)::before {
+    left: 30px;
+}
+/* Vertical */
+.uk-grid-divider.uk-grid-medium.uk-grid-stack > .uk-grid-margin {
+    margin-top: 60px;
+}
+.uk-grid-divider.uk-grid-medium.uk-grid-stack > .uk-grid-margin::before {
+    top: -30px;
+    left: 60px;
+}
+/*
+ * Large
+ */
+/* Horizontal */
+.uk-grid-divider.uk-grid-large {
+    margin-left: -80px;
+}
+.uk-grid-divider.uk-grid-large > * {
+    padding-left: 80px;
+}
+.uk-grid-divider.uk-grid-large > :not(.uk-first-column)::before {
+    left: 40px;
+}
+/* Vertical */
+.uk-grid-divider.uk-grid-large.uk-grid-stack > .uk-grid-margin {
+    margin-top: 80px;
+}
+.uk-grid-divider.uk-grid-large.uk-grid-stack > .uk-grid-margin::before {
+    top: -40px;
+    left: 80px;
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+    /* Horizontal */
+    .uk-grid-divider.uk-grid-large {
+        margin-left: -140px;
+    }
+    .uk-grid-divider.uk-grid-large > * {
+        padding-left: 140px;
+    }
+    .uk-grid-divider.uk-grid-large > :not(.uk-first-column)::before {
+        left: 70px;
+    }
+    /* Vertical */
+    .uk-grid-divider.uk-grid-large.uk-grid-stack > .uk-grid-margin {
+        margin-top: 140px;
+    }
+    .uk-grid-divider.uk-grid-large.uk-grid-stack > .uk-grid-margin::before {
+        top: -70px;
+        left: 140px;
+    }
+}
+/* Match child of a grid cell
+ ========================================================================== */
+/*
+ * Behave like a block element
+ * 1. Wrap into the next line
+ * 2. Take the full width, at least 100%. Only if no class from the Width component is set.
+ * 3. Expand width even if larger than 100%, e.g. because of negative margin (Needed for nested grids)
+ */
+.uk-grid-match > *,
+.uk-grid-item-match {
+    display: flex;
+    /* 1 */
+    flex-wrap: wrap;
+}
+.uk-grid-match > * > :not([class*='uk-width']),
+.uk-grid-item-match > :not([class*='uk-width']) {
+    /* 2 */
+    box-sizing: border-box;
+    width: 100%;
+    /* 3 */
+    flex: auto;
+}
