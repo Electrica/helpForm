@@ -92,8 +92,8 @@ class modDashboardWidgetHelpForm extends modDashboardWidgetInterface {
             $result = curl_exec($ch);
             curl_close($ch);
 
-            if($result == true){
-                $chunk = '<h3>Мы приняли Ваш запрос</h3>';
+            if($result){
+                $chunk = '<h2>'.$result.'</h2>';
             }
 
         }
