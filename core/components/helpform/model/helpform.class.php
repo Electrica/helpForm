@@ -2,7 +2,6 @@
 
 class modDashboardWidgetHelpForm extends modDashboardWidgetInterface {
     public $version = '1.0';
-    private $check = false;
     public $config;
 
     public function __construct($modx, modDashboardWidget $widget, modManagerController $controller)
@@ -28,6 +27,8 @@ class modDashboardWidgetHelpForm extends modDashboardWidgetInterface {
         $this->controller->addCss($this->config['cssUrl'] . 'mgr/main.css');
         //$this->controller->addJavascript($this->config['jsUrl'] . 'mgr/helpform.js');
         $this->controller->addJavascript($this->config['jsUrl'] . 'mgr/uikit.min.js');
+
+        $this->modx->lexicon->load('helpform:default');
     }
 
     public function render() {
@@ -82,18 +83,57 @@ class modDashboardWidgetHelpForm extends modDashboardWidgetInterface {
                 }
             }
 
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, "https://modx.kz/assets/helpform/curl.php");
-            curl_setopt($ch, CURLOPT_HEADER, 0);
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+            if($emails = $this->modx->getOption('helpform_help_email')){
+                // Тут обработка отправки почты
 
-            $result = curl_exec($ch);
-            curl_close($ch);
+                $mail = array();
+                foreach (explode(',', $emails) as $email){
+                    $mail[] = $email;
+                }
 
-            if($result){
-                $chunk = '<h2>'.$result.'</h2>';
+                $fields = array_merge(array('tplPath' => $this->config['tplPath']), $fields);
+
+                $message = $pdoTools->getChunk('@FILE chunks/helpformemail.tpl', $fields);
+
+                $this->modx->getService('mail', 'mail.modPHPMailer');
+                $this->modx->mail->set(modMail::MAIL_BODY, $message);
+                $this->modx->mail->set(modMail::MAIL_FROM, $this->modx->getOption('emailsender'));
+                $this->modx->mail->set(modMail::MAIL_FROM_NAME, $this->modx->getOption('site_name'));
+                $this->modx->mail->set(modMail::MAIL_SUBJECT, $fields['question']);
+                foreach ($mail as $m){
+                    $this->modx->mail->address('to', trim($m));
+                }
+                $this->modx->mail->setHTML(true);
+                if($log){
+                    $this->modx->mail->attach($log);
+                }
+
+                if (!$this->modx->mail->send()) {
+                    $this->modx->log(modX::LOG_LEVEL_ERROR, 'An error occurred while trying to send the email: '.$this->modx->mail->mailer->ErrorInfo);
+                }
+
+                $this->modx->mail->reset();
+                $chunk = '<h2>'.$this->modx->lexicon('helpform_thanks_message').'</h2>';
+
+            }elseif($this->modx->getOption('helpform_curl_url')){
+
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $this->modx->getOption('helpform_curl_url'));
+                curl_setopt($ch, CURLOPT_HEADER, 0);
+                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+
+                $result = curl_exec($ch);
+                curl_close($ch);
+
+                if($result){
+                    $result = $this->modx->stripTags($result);
+                    $chunk = '<h2>'.$result.'</h2>';
+                }
+
+            }else{
+                $chunk = '<h2>'.$this->modx->lexicon('helpform_empty_settings').'</h2>';
             }
 
         }

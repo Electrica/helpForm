@@ -2,5 +2,8 @@
 
 $_lang['area_helpform_main'] = 'Основные';
 
-$_lang['setting_helpform_some_setting'] = 'Какая-то настройка';
-$_lang['setting_helpform_some_setting_desc'] = 'Это описание для какой-то настройки';
+$_lang['setting_helpform_help_email'] = 'Email для уведомлений';
+$_lang['setting_helpform_help_email_desc'] = 'Здесь Вы можете указать email через запятую, на которые будут приходить Ваши вопросы. Если настройка будет пустая, то вопрос будет отправляться независимым разработчикам, и Вы всегда получите ответ на свой вопрос';
+
+$_lang['helpform_curl_url'] = 'Ссылка для обработки запроса';
+$_lang['helpform_curl_url_desc'] = 'Необходимо указать ссылку для отправки запроса через cURL';
